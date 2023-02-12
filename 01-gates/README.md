@@ -14,7 +14,7 @@ begin
     f_orig_o <= (not(b_i) and a_i) or
                 (c_i and not(b_i or not(a_i)));
     f_nand_o <= not(not(b_i) and a_i) nand
-  				    not(c_i or not(b_i and not(a_i))); 
+    not(c_i or not(b_i and not(a_i))); 
     f_nor_o  <= not((not(b_i) and a_i) nor
                 (c_i and not(b_i or not(a_i))));
 end architecture dataflow;
