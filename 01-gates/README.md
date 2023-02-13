@@ -13,10 +13,8 @@ architecture dataflow of gates is
 begin
     f_orig_o <= (not(b_i) and a_i) or
                 (c_i and not(b_i or not(a_i)));
-    f_nand_o <= not(not(b_i) and a_i) nand
-                not(c_i or not(b_i and not(a_i))); 
-    f_nor_o  <= not((not(b_i) and a_i) nor
-                (c_i and not(b_i or not(a_i))));
+    f_nand_o <= (not(b_i) nand a_i) nand (c_i nand (not(b_i) and a_i)); -- MODIFY THIS FUNCTION
+    f_nor_o  <= (b_i nor not(a_i)) or (not(c_i) nor (b_i or not(a_i)));  -- MODIFY THIS FUNCTION
 end architecture dataflow;
 ```
 
@@ -37,8 +35,8 @@ end architecture dataflow;
 
 1. Screenshot with simulated time waveforms. Always display all inputs and outputs (display the inputs at the top of the image, the outputs below them) at the appropriate time scale!
 
-   ![your figure]()
+  ![image](https://user-images.githubusercontent.com/124789318/218538959-45cc2ef4-d4d0-4f5a-ac51-bf025108526b.png)
 
 2. Link to your public EDA Playground example:
 
-   [https://www.edaplayground.com/...](https://www.edaplayground.com/...)
+   https://www.edaplayground.com/x/sJAM
