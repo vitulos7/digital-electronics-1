@@ -51,6 +51,6 @@
 
 2. Link to your public EDA Playground example:
 
-   [https://www.edaplayground.com/...](https://www.edaplayground.com/x/9dYr)
+   [2bit comparator](https://www.edaplayground.com/x/9dYr)
    
    [4bit comparator](https://www.edaplayground.com/x/Kg5B)
