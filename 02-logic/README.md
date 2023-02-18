@@ -10,7 +10,7 @@
 
    Less than:
 
-   ![image](file:///home/vit/Obrázky/Is less than.png)
+   ![image]https://github.com/vitulos7/digital-electronics-1/blob/main/02-logic/Is%20%20less%20than.png
 
 2. Mark the largest possible implicants in the K-map and according to them, write the equations of simplified SoP (Sum of the Products) form of the "greater than" function and simplified PoS (Product of the Sums) form of the "less than" function.
 
