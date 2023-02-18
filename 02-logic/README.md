@@ -6,7 +6,7 @@
 
    Greater than:
 
-   ![image](file:///home/vit/Obrázky/Is greater than.png)
+   ![image]
 
    Less than:
 
