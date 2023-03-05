@@ -30,84 +30,97 @@
    -- Experiments on your own: LED(7:4) indicators
 
    -- Turn LED(4) on if input value is equal to 0, ie "0000"
-   -- LED(4) <= `0` when hex is "0000"
+   
+      LED(4) <= `0` when hex is "0000";
 
    -- Turn LED(5) on if input value is greater than "1001", ie 10, 11, 12, ...
-   -- LED(5) <= case hex is
+   -- LED(5) <=
+   
+   case hex is
 
         when "1010" =>
 
-          LED(5) <= "0"
+          LED(5) <= "0";
           
         when "1011" =>
 
-          LED(5) <= "0"
+          LED(5) <= "0";
           
         when "1100" =>
 
-          LED(5) <= "0"
+          LED(5) <= "0";
           
         when "1101" =>
 
-          LED(5) <= "0"
+          LED(5) <= "0";
           
         when "1111" =>
 
-          LED(5) <= "0"
+          LED(5) <= "0";
+          
+   end case;
 
    -- Turn LED(6) on if input value is odd, ie 1, 3, 5, ...
-   -- LED(6) <= case hex is
+   -- LED(6) <=
+   
+   case hex is
 
         when "0001" =>
 
-          LED(6) <= "0"
+          LED(6) <= "0";
           
         when "0011" =>
 
-          LED(6) <= "0"
+          LED(6) <= "0";
           
         when "0101" =>
 
-          LED(6) <= "0"
+          LED(6) <= "0";
           
         when "0111" =>
 
-          LED(6) <= "0"
+          LED(6) <= "0";
           
         when "1001" =>
 
-          LED(6) <= "0"
+          LED(6) <= "0";
           
         when "1011" =>
 
-          LED(6) <= "0"
+          LED(6) <= "0";
           
         when "1101" =>
 
-          LED(6) <= "0"
+          LED(6) <= "0";
           
         when "1111" =>
 
-          LED(6) <= "0"
+          LED(6) <= "0";
+          
+   end case;
 
 
    -- Turn LED(7) on if input value is a power of two, ie 1, 2, 4, or 8
-   -- LED(7) <= case hex is
+   -- LED(7) <=
+   
+   case hex is
 
         when "0001" =>
 
-          LED(7) <= "0"
+          LED(7) <= "0";
           
         when "0010" =>
 
-          LED(7) <= "0"
+          LED(7) <= "0";
           
          when "0100" =>
 
-          LED(7) <= "0"
+          LED(7) <= "0";
           
         when "1000" =>
 
-          LED(7) <= "0"
+          LED(7) <= "0";
+          
+   end case;
           
    ```
