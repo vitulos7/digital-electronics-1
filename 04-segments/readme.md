@@ -1,4 +1,4 @@
-# Lab 4: INSERT_YOUR_FIRSTNAME INSERT_YOUR_LASTNAME
+# Lab 4: Vit Walach
 
 ### LED(7:4) indicators
 
@@ -6,22 +6,22 @@
 
    | **Hex** | **Inputs** | **LED4** | **LED5** | **LED6** | **LED7** |
    | :-: | :-: | :-: | :-: | :-: | :-: |
-   | 0 | 0000 |  |  |  |  |
-   | 1 | 0001 |  |  |  |  |
-   | 2 | 0010 |  |  |  |  |
-   | 3 | 0011 |  |  |  |  |
-   | 4 | 0100 |  |  |  |  |
-   | 5 | 0101 |  |  |  |  |
-   | 6 | 0110 |  |  |  |  |
-   | 7 | 0111 |  |  |  |  |
-   | 8 | 1000 |  |  |  |  |
-   | 9 | 1001 |  |  |  |  |
-   | A | 1010 |  |  |  |  |
-   | b | 1011 |  |  |  |  |
-   | C | 1100 |  |  |  |  |
-   | d | 1101 |  |  |  |  |
-   | E | 1110 |  |  |  |  |
-   | F | 1111 |  |  |  |  |
+   | 0 | 0000 | 0 | 1 | 1 | 0 |
+   | 1 | 0001 | 1 | 1 | 0 | 1 |
+   | 2 | 0010 | 1 | 1 | 1 | 1 |
+   | 3 | 0011 | 1 | 1 | 0 | 0 |
+   | 4 | 0100 | 1 | 1 | 1 | 1 |
+   | 5 | 0101 | 1 | 1 | 0 | 0 |
+   | 6 | 0110 | 1 | 1 | 1 | 0 |
+   | 7 | 0111 | 1 | 1 | 0 | 0 |
+   | 8 | 1000 | 1 | 1 | 1 | 1 |
+   | 9 | 1001 | 1 | 1 | 0 | 0 |
+   | A | 1010 | 1 | 0 | 1 | 0 |
+   | b | 1011 | 1 | 0 | 0 | 0 |
+   | C | 1100 | 1 | 0 | 1 | 0 |
+   | d | 1101 | 1 | 0 | 0 | 0 |
+   | E | 1110 | 1 | 0 | 1 | 0 |
+   | F | 1111 | 1 | 0 | 0 | 0 |
 
 2. Listing of LEDs(7:4) part of VHDL architecture from source file `top.vhd`. Try to write logic functions as simple as possible. Always use syntax highlighting, meaningful comments, and follow VHDL guidelines:
 
