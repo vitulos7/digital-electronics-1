@@ -4,7 +4,9 @@
 
    ![Characteristic equations](images/eq_flip_flops.png)
     D:   q_{n+1} = d
+    
     JK:  q_{n+1} = J/q + /Kq
+    
     T:   q_{n+1} = T/q + /Tq
 <!--
 https://editor.codecogs.com/
