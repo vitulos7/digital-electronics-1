@@ -22,18 +22,22 @@ begin
         if rising_edge(clk) then
 
         -- WRITE YOUR CODE HERE
-            if (rst = '1') then
-                sig_q   <=  '0';
+            if (j = '0') then
+               if (k = '0') then
+                  sig_q   <=  sig_q;
+               else
+                  sig_q   <=  '0';
+               end if;
             else
-                if (t = '1') then
-                    sig_q     <= not sig_q;
-                else
-                    sig_q     <= sig_q;
+                if (k = '0') then
+                  sig_q   <=  '1';
+               else
+                  sig_q   <=  not sig_q;
                 end if;
             end if;
 
         end if;
-    end process p_t_ff_rst;
+    end process jk_ff_rst;
 
     -- Output ports are permanently connected to local signal
     q     <= sig_q;
