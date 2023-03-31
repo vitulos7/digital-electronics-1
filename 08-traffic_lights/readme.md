@@ -1,8 +1,10 @@
-Lab 8: INSERT_YOUR_FIRSTNAME INSERT_YOUR_LASTNAME
-Traffic light controller
+# Lab 8: VIT WALACH
 
-    Listing of VHDL code of the completed process p_traffic_fsm. Always use syntax highlighting, meaningful comments, and follow VHDL guidelines:
+### Traffic light controller
 
+1. Listing of VHDL code of the completed process `p_traffic_fsm`. Always use syntax highlighting, meaningful comments, and follow VHDL guidelines:
+
+```vhdl
     --------------------------------------------------------
     -- p_traffic_fsm:
     -- A sequential process with synchronous reset and
@@ -17,9 +19,13 @@ Traffic light controller
 
         end if; -- Rising edge
     end process p_traffic_fsm;
+```
 
-    Screenshot with simulated time waveforms. The full functionality of the entity must be verified. Always display all inputs and outputs (display the inputs at the top of the image, the outputs below them) at the appropriate time scale!
+2. Screenshot with simulated time waveforms. The full functionality of the entity must be verified. Always display all inputs and outputs (display the inputs at the top of the image, the outputs below them) at the appropriate time scale!
 
-    your figure
+   ![your figure]()
 
-    Figure of Moor-based state diagram of the traffic light controller with speed button to ensure a synchronous transition to the WEST_GO state. The image can be drawn on a computer or by hand. Always name all states, transitions, and input signals!
+3. Figure of Moor-based state diagram of the traffic light controller with *speed button* to ensure a synchronous transition to the `WEST_GO` state. The image can be drawn on a computer or by hand. Always name all states, transitions, and input signals!
+
+   ![your figure]()
+
