@@ -45,7 +45,7 @@ signal one_cnt : natural;
 
 begin
 
-p_traffic_fsm : process (clk) is
+inputM_process : process (clk) is
 
   begin
   
@@ -58,20 +58,18 @@ p_traffic_fsm : process (clk) is
         zero_cnt <= 0;
       end if;
       
-      if (one_cnt = 1) then
-        char <= "00001";
-      elsif (one_cnt = 3) then
-        char <= "00111";
-      elsif (zero_cnt = 1) then
-        char <= "11110";
-      elsif (zero_cnt = 3) then
-        char <= "11000";
-      elsif (zero_cnt = 5) then
-        char <= "00000";
+      if (one_cnt = 1) then         % dot
+        char <= "00";
+      elsif (one_cnt = 3) then      % dash
+        char <= "11";
+      elsif (zero_cnt = 3) then     % short gap (between letters)
+        char <= "01";
+      elsif (zero_cnt = 5) then     % medium gap (between words)
+        char <= "10";
       end if;
       
     end if; -- Rising edge
-end process p_traffic_fsm;
+end process inputM_process;
 
 
 end Behavioral;
