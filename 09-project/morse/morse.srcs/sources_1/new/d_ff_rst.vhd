@@ -34,8 +34,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity char_register is
     Port ( clk : in STD_LOGIC;
            rst : in STD_LOGIC;
-           char : in std_logic_vector(2 downto 0); 
-           BTNC : in STD_LOGIC);
+           char : in STD_LOGIC; 
+           enable : in STD_LOGIC);
 end char_register;
 
 architecture Behavioral of char_register is
