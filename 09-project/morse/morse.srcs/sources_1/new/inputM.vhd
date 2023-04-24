@@ -58,12 +58,12 @@ inputM_process : process (clk) is
             zero_cnt  <= zero_cnt + 1;
             one_cnt <= 0;
             btnc_value <= 0;
-            btnc_change <= "0";
+            btnc_change <= '0';
         elsif (btnc_value = 1) then
             zero_cnt  <= zero_cnt + 1;
             one_cnt <= 0;
             btnc_value <= 0;
-            btnc_change <= "1";
+            btnc_change <= '1';
         end if;
             
       elsif (BTNC = '1') then
