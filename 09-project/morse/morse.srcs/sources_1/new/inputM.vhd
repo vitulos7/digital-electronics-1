@@ -41,6 +41,8 @@ architecture Behavioral of inputM is
 
 signal zero_cnt : natural;
 signal one_cnt : natural;
+signal btnc_value : natural;
+signal btnc_change : natural;
 
 
 begin
@@ -50,22 +52,42 @@ inputM_process : process (clk) is
   begin
   
     if (rising_edge(clk)) then
-      if (BTNC = '0') then                    -- Synchronous reset             -- Init state
-        zero_cnt  <= zero_cnt + 1;
-        one_cnt <= 0;
+      if (BTNC = '0') then
+        if (btnc_value = 0) then 
+            zero_cnt  <= zero_cnt + 1;
+            one_cnt <= 0;
+            btnc_value <= 0;
+            btnc_change <= 0;
+        elsif (btnc_value = 1) then
+            zero_cnt  <= zero_cnt + 1;
+            one_cnt <= 0;
+            btnc_value <= 0;
+            btnc_change <= 1;
+        end if;
       elsif (BTNC = '1') then
-        one_cnt <= zero_cnt + 1;
-        zero_cnt <= 0;
+        if (btnc_value = 0) then
+            one_cnt <= zero_cnt + 1;
+            zero_cnt <= 0;
+            btnc_value <= 1;
+            btnc_change <= 1;
+        elsif (btnc_value = 1) then
+            one_cnt <= zero_cnt + 1;
+            zero_cnt <= 0;
+            btnc_value <= 1;
+            btnc_change <= 0;
+        end if;
       end if;
       
-      if (one_cnt = 1) then         % dot
-        char <= "00";
-      elsif (one_cnt = 3) then      % dash
-        char <= "11";
-      elsif (zero_cnt = 3) then     % short gap (between letters)
-        char <= "01";
-      elsif (zero_cnt = 5) then     % medium gap (between words)
-        char <= "10";
+      if (btnc_change = 1) then
+          if (one_cnt = 1) then         % dot
+            char <= "00";
+          elsif (one_cnt = 3) then      % dash
+            char <= "11";
+          elsif (zero_cnt = 3) then     % short gap (between letters)
+            char <= "01";
+          elsif (zero_cnt = 5) then     % medium gap (between words)
+            char <= "10";
+          end if;
       end if;
       
     end if; -- Rising edge
