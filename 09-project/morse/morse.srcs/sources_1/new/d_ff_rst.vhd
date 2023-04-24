@@ -4,7 +4,7 @@
 -- 
 -- Create Date: 08.03.2023 13:27:27
 -- Design Name: 
--- Module Name: d_ff_rst - Behavioral
+-- Module Name: char_register - Behavioral
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 
@@ -31,37 +31,65 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity d_ff_rst is
+entity char_register is
     Port ( clk : in STD_LOGIC;
            rst : in STD_LOGIC;
-           d : in STD_LOGIC;
-           q : out STD_LOGIC;
-           q_bar : out STD_LOGIC);
-end d_ff_rst;
+           char : in std_logic_vector(2 downto 0); 
+           BTNC : in STD_LOGIC);
+end char_register;
 
-architecture behavioral of d_ff_rst is
+architecture Behavioral of char_register is
+
 begin
-    --------------------------------------------------------
-    -- p_d_ff_rst:
-    -- D type flip-flop with a high-active sync reset and
-    -- rising-edge clk.
-    -- q(n+1) = d
-    --------------------------------------------------------
-    p_d_ff_rst : process (clk) is
-    begin
-        if rising_edge(clk) then  -- Synchronous process
 
-            -- USE HIGH-ACTIVE RESET HERE
-            if (rst = '1') then
-                q     <= '0';
-                q_bar <= '1';
-            else
-                q     <= d;
-                q_bar <= not d;
-            end if;
-                
-                
-                
+char_register_process : process (clk) is
+
+  begin
+  
+    if (rising_edge(clk)) then
+        
+      if (BTNC = '0') then    
+        if (btnc_value = 0) then 
+            zero_cnt  <= zero_cnt + 1;
+            one_cnt <= 0;
+            btnc_value <= 0;
+            btnc_change <= 0;
+        elsif (btnc_value = 1) then
+            zero_cnt  <= zero_cnt + 1;
+            one_cnt <= 0;
+            btnc_value <= 0;
+            btnc_change <= 1;
         end if;
-    end process p_d_ff_rst;
-end architecture behavioral;
+            
+      elsif (BTNC = '1') then
+        if (btnc_value = 0) then
+            one_cnt <= zero_cnt + 1;
+            zero_cnt <= 0;
+            btnc_value <= 1;
+            btnc_change <= 1;
+        elsif (btnc_value = 1) then
+            one_cnt <= zero_cnt + 1;
+            zero_cnt <= 0;
+            btnc_value <= 1;
+            btnc_change <= 0;
+        end if;
+            
+      end if;
+      
+      if (btnc_change = 1) then
+          if (one_cnt = 1) then         % dot
+            char <= "00";
+          elsif (one_cnt = 3) then      % dash
+            char <= "11";
+          elsif (zero_cnt = 3) then     % short gap (between letters)
+            char <= "01";
+          elsif (zero_cnt = 5) then     % medium gap (between words)
+            char <= "10";
+          end if;
+              
+      end if;
+      
+    end if; -- Rising edge
+end process char_register_process;
+
+end Behavioral;
