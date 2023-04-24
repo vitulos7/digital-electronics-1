@@ -33,8 +33,10 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity inputM is
     Port ( clk : in STD_LOGIC;
-           char : out std_logic_vector(4 downto 0); 
-           BTNC : in STD_LOGIC);
+           rst : in STD_LOGIC;
+           BTNC : in STD_LOGIC;
+           char : out std_logic_vector(1 downto 0);
+           btnc_change : out STD_LOGIC;
 end inputM;
 
 architecture Behavioral of inputM is
@@ -42,8 +44,6 @@ architecture Behavioral of inputM is
 signal zero_cnt : natural;
 signal one_cnt : natural;
 signal btnc_value : natural;
-signal btnc_change : natural;
-
 
 begin
 
@@ -58,12 +58,12 @@ inputM_process : process (clk) is
             zero_cnt  <= zero_cnt + 1;
             one_cnt <= 0;
             btnc_value <= 0;
-            btnc_change <= 0;
+            btnc_change <= "0";
         elsif (btnc_value = 1) then
             zero_cnt  <= zero_cnt + 1;
             one_cnt <= 0;
             btnc_value <= 0;
-            btnc_change <= 1;
+            btnc_change <= "1";
         end if;
             
       elsif (BTNC = '1') then
@@ -71,17 +71,17 @@ inputM_process : process (clk) is
             one_cnt <= zero_cnt + 1;
             zero_cnt <= 0;
             btnc_value <= 1;
-            btnc_change <= 1;
+            btnc_change <= '1';
         elsif (btnc_value = 1) then
             one_cnt <= zero_cnt + 1;
             zero_cnt <= 0;
             btnc_value <= 1;
-            btnc_change <= 0;
+            btnc_change <= '0';
         end if;
             
       end if;
       
-      if (btnc_change = 1) then
+      if (btnc_change = '1') then
           if (one_cnt = 1) then         % dot
             char <= "00";
           elsif (one_cnt = 3) then      % dash
