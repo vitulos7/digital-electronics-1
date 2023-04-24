@@ -52,7 +52,9 @@ inputM_process : process (clk) is
   begin
   
     if (rising_edge(clk)) then
+        
       if (BTNC = '0') then
+          
         if (btnc_value = 0) then 
             zero_cnt  <= zero_cnt + 1;
             one_cnt <= 0;
@@ -64,6 +66,7 @@ inputM_process : process (clk) is
             btnc_value <= 0;
             btnc_change <= 1;
         end if;
+            
       elsif (BTNC = '1') then
         if (btnc_value = 0) then
             one_cnt <= zero_cnt + 1;
@@ -76,9 +79,11 @@ inputM_process : process (clk) is
             btnc_value <= 1;
             btnc_change <= 0;
         end if;
+            
       end if;
       
       if (btnc_change = 1) then
+          
           if (one_cnt = 1) then         % dot
             char <= "00";
           elsif (one_cnt = 3) then      % dash
@@ -88,6 +93,7 @@ inputM_process : process (clk) is
           elsif (zero_cnt = 5) then     % medium gap (between words)
             char <= "10";
           end if;
+              
       end if;
       
     end if; -- Rising edge
