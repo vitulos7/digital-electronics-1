@@ -53,8 +53,7 @@ inputM_process : process (clk) is
   
     if (rising_edge(clk)) then
         
-      if (BTNC = '0') then
-          
+      if (BTNC = '0') then    
         if (btnc_value = 0) then 
             zero_cnt  <= zero_cnt + 1;
             one_cnt <= 0;
@@ -83,7 +82,6 @@ inputM_process : process (clk) is
       end if;
       
       if (btnc_change = 1) then
-          
           if (one_cnt = 1) then         % dot
             char <= "00";
           elsif (one_cnt = 3) then      % dash
