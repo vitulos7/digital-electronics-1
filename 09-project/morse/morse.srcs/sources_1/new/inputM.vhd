@@ -86,8 +86,10 @@ inputM_process : process (clk) is
       if (btnc_change = '1') then
           if (one_cnt = 1) then         % dot
             char <= "0";
+            space <= "0";
           elsif (one_cnt = 3) then      % dash
             char <= "1";
+            space <= "0";
           elsif (zero_cnt = 3) then     % short gap (between letters)
             space <= "1";
           elsif (zero_cnt = 7) then     % medium gap (between words)
