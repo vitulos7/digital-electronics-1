@@ -36,7 +36,8 @@ entity inputM is
            rst : in STD_LOGIC;
            BTNC : in STD_LOGIC;
            char : out std_logic_vector(1 downto 0);
-           btnc_change : out STD_LOGIC;
+           btnc_change : out STD_LOGIC
+          );
 end inputM;
 
 architecture Behavioral of inputM is
