@@ -35,8 +35,9 @@ entity inputM is
     Port ( clk : in STD_LOGIC;
            rst : in STD_LOGIC;
            BTNC : in STD_LOGIC;
-           char : out std_logic_vector(1 downto 0);
-           btnc_change : out STD_LOGIC
+           char : out STD_LOGIC;
+           btnc_change : out STD_LOGIC;
+           space : out STD_LOGIC
           );
 end inputM;
 
@@ -84,13 +85,13 @@ inputM_process : process (clk) is
       
       if (btnc_change = '1') then
           if (one_cnt = 1) then         % dot
-            char <= "00";
+            char <= "0";
           elsif (one_cnt = 3) then      % dash
-            char <= "11";
+            char <= "1";
           elsif (zero_cnt = 3) then     % short gap (between letters)
-            char <= "01";
-          elsif (zero_cnt = 5) then     % medium gap (between words)
-            char <= "10";
+            space <= "1";
+          elsif (zero_cnt = 7) then     % medium gap (between words)
+            space <= "1";
           end if;
               
       end if;
