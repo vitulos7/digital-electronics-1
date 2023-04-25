@@ -36,7 +36,15 @@ entity char_register is
            rst : in STD_LOGIC;
            char : in STD_LOGIC; 
            enable : in STD_LOGIC;
-           word : out std_logic_vector(1 downto 0));
+           space : out STD_LOGIC;
+           word : out std_logic_vector(1 downto 0)
+         );
+    port map (
+      clk => clk,
+      rst => rst,
+      char  => char,
+      enable => btnc_change
+    );
 end char_register;
 
 architecture Behavioral of char_register is
@@ -48,12 +56,18 @@ begin
 char_register_process : process (clk) is
 
   begin
-  
+    
+    spot  <= 0;
+      
     if (rising_edge(clk)) then
-        
+      
+      if (space = '1') then 
+          spot  <= 0;
+      end if;
+          
       if (enable = '1') then 
           spot  <= spot + 1;
-          word <= word + char*2^(spot);
+          word <= word + char*2^(spot-1);
       end if;
       
     end if; -- Rising edge
