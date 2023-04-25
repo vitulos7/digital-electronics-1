@@ -47,6 +47,7 @@ entity char_register is
     );
 end char_register;
 
+    
 architecture Behavioral of char_register is
 
 signal spot : natural;    
