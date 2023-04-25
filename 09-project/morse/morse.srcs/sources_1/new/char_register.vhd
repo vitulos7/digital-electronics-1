@@ -4,7 +4,7 @@
 -- 
 -- Create Date: 08.03.2023 13:27:27
 -- Design Name: 
--- Module Name: d_ff_rst - Behavioral
+-- Module Name: char_register - Behavioral
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 
