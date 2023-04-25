@@ -35,11 +35,14 @@ entity char_register is
     Port ( clk : in STD_LOGIC;
            rst : in STD_LOGIC;
            char : in STD_LOGIC; 
-           enable : in STD_LOGIC);
+           enable : in STD_LOGIC;
+           word : out std_logic_vector(1 downto 0));
 end char_register;
 
 architecture Behavioral of char_register is
 
+signal spot : natural;    
+    
 begin
 
 char_register_process : process (clk) is
@@ -48,45 +51,9 @@ char_register_process : process (clk) is
   
     if (rising_edge(clk)) then
         
-      if (BTNC = '0') then    
-        if (btnc_value = 0) then 
-            zero_cnt  <= zero_cnt + 1;
-            one_cnt <= 0;
-            btnc_value <= 0;
-            btnc_change <= 0;
-        elsif (btnc_value = 1) then
-            zero_cnt  <= zero_cnt + 1;
-            one_cnt <= 0;
-            btnc_value <= 0;
-            btnc_change <= 1;
-        end if;
-            
-      elsif (BTNC = '1') then
-        if (btnc_value = 0) then
-            one_cnt <= zero_cnt + 1;
-            zero_cnt <= 0;
-            btnc_value <= 1;
-            btnc_change <= 1;
-        elsif (btnc_value = 1) then
-            one_cnt <= zero_cnt + 1;
-            zero_cnt <= 0;
-            btnc_value <= 1;
-            btnc_change <= 0;
-        end if;
-            
-      end if;
-      
-      if (btnc_change = 1) then
-          if (one_cnt = 1) then         % dot
-            char <= "00";
-          elsif (one_cnt = 3) then      % dash
-            char <= "11";
-          elsif (zero_cnt = 3) then     % short gap (between letters)
-            char <= "01";
-          elsif (zero_cnt = 5) then     % medium gap (between words)
-            char <= "10";
-          end if;
-              
+      if (enable = '1') then 
+          spot  <= spot + 1;
+          word <= word + char*2^(spot);
       end if;
       
     end if; -- Rising edge
