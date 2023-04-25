@@ -34,10 +34,11 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity char_register is
 
    port(clk: in std_logic;
- 	    enable: in std_logic; 
- 	    char: in std_logic; -- new data to shift in
- 	    word: out std_logic_vector(4 downto 0);
- 	    Input: in std_logic_vector(4 downto 0));
+ 	     enable: in std_logic; 
+ 	     char: in std_logic; -- new data to shift in
+ 	     word: out std_logic_vector(4 downto 0);
+ 	     Input: in std_logic_vector(4 downto 0));
+   
    port map (
         clk => clk,
         char  => char,
@@ -55,15 +56,16 @@ begin
    variable temp: std_logic_vector(4 downto 0);
     
    begin
-      wait until rising_edge (clk);
-      temp := Input; 
-      if L='1' then 
-         for i in 0 to 2 loop
-            temp(i) := temp(i+1);
-         end loop;
-         temp(3) := w;
-      end if;
-      Output <= temp;
+      if (rising_edge(clk)) then
+   
+         if (enable = 0) then 
+            for i in 0 to 3 loop
+               temp(i) <= temp(i+1);
+            end loop;
+            temp(4) <= w;
+         end if;
+         
+      word <= temp;
     end process;
 
 end Behavioral;
