@@ -66,6 +66,7 @@ char_register_process : process (clk) is
          end if;
          
       word <= temp;
-    end process;
+    end process char_register_process;
+
 
 end Behavioral;
