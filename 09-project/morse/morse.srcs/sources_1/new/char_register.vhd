@@ -47,15 +47,15 @@ entity char_register is
 
 end char_register;
 
-architecture Behavioral of Shift_register_VHDL is
-    
+architecture Behavioral of char_register is
+
+variable temp: std_logic_vector(4 downto 0);
+
 begin
-    
-   process
-    
-   variable temp: std_logic_vector(4 downto 0);
-    
-   begin
+
+char_register_process : process (clk) is
+
+  begin
       if (rising_edge(clk)) then
    
          if (enable = 0) then 
