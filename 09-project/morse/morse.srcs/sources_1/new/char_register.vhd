@@ -4,7 +4,7 @@
 -- 
 -- Create Date: 08.03.2023 13:27:27
 -- Design Name: 
--- Module Name: char_register - Behavioral
+-- Module Name: d_ff_rst - Behavioral
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 
@@ -32,47 +32,38 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity char_register is
-    Port ( clk : in STD_LOGIC;
-           rst : in STD_LOGIC;
-           char : in STD_LOGIC; 
-           enable : in STD_LOGIC;
-           space : out STD_LOGIC;
-           word : out std_logic_vector(1 downto 0)
-         );
-    port map (
-      clk => clk,
-      rst => rst,
-      char  => char,
-      enable => btnc_change
+
+   port(clk: in std_logic;
+ 	    enable: in std_logic; 
+ 	    char: in std_logic; -- new data to shift in
+ 	    word: out std_logic_vector(4 downto 0);
+ 	    Input: in std_logic_vector(4 downto 0));
+   port map (
+        clk => clk,
+        char  => char,
+        enable => btnc_change
     );
+
 end char_register;
 
-    
-architecture Behavioral of char_register is
-
-signal spot : natural;    
+architecture Behavioral of Shift_register_VHDL is
     
 begin
-
-char_register_process : process (clk) is
-
-  begin
     
-    spot  <= 0;
-      
-    if (rising_edge(clk)) then
-      
-      if (space = '1') then 
-          spot  <= 0;
+   process
+    
+   variable temp: std_logic_vector(4 downto 0);
+    
+   begin
+      wait until rising_edge (clk);
+      temp := Input; 
+      if L='1' then 
+         for i in 0 to 2 loop
+            temp(i) := temp(i+1);
+         end loop;
+         temp(3) := w;
       end if;
-          
-      if (enable = '1') then 
-          spot  <= spot + 1;
-          word <= word + char*2^(spot-1);
-      end if;
-      
-    end if; -- Rising edge
-        
-end process char_register_process;
+      Output <= temp;
+    end process;
 
 end Behavioral;
