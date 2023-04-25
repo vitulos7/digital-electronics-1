@@ -71,6 +71,7 @@ char_register_process : process (clk) is
       end if;
       
     end if; -- Rising edge
+        
 end process char_register_process;
 
 end Behavioral;
